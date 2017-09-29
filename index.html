@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>my spa page</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<div class="top-bar">
+			<div class="title">
+				Code Creatives 
+			</div>
+			<div class="links" data-bind="foreach: navLinks">
+				<span data-bind="text: name"></span>
+			</div>
+		</div>
+		<div class="main">
+			<!-- here comes the content -->
+			<!-- works -->
+			<!-- data-bind="template: 'works-template', foreach: works" -->
+			<div class="worksWrapper">
+				<!-- <script type="text/html" id="works-template">
+					<div class="workList">
+						<div class="link" data-bind="text: title, click: showProject"></div>
+					</div>
+					<div class="workImg">
+						<div class="imgWrap">
+							<img data-bind="attr: {src: img, alt: title}">
+						</div>
+						<div class="linkToProject">
+							<a data-bind="attr: {href: linkTo, target: '_blank'}, text: title"></a>
+						</div>
+					</div>
+					<div class="workDesc">
+						<div class="workTitle" data-bind="text: title"></div>
+						<div class="descText" data-bind="text: description"></div>
+					</div>
+				</script> -->
+				<div class="workList">
+					<div class="link">project1</div>
+					<div class="link">project2</div>
+					<div class="link">project3</div>
+					<div class="link">project4</div>
+					<div class="link">project5</div>
+					<div class="link">project6</div>
+					<div class="link">project7</div>
+					<div class="link">project8</div>
+					<div class="link">project9</div>
+					<div class="link">project10</div>
+					<div class="link">project11</div>
+					<div class="link">project12</div>
+					<div class="link">project13</div>
+					<div class="link">project14</div>
+					<div class="link">project15</div>
+				</div>
+				<div class="workImg">
+					<div class="imgWrap"></div>
+					<div class="linkToProject">
+						<a href="">link to project</a>
+					</div>
+				</div>
+				<div class="workDesc">
+					<div class="workTitle">
+						Aliquam neque enim
+					</div>
+					<div class="descText">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit diam odio. Proin justo turpis, rhoncus ut urna ac, viverra cursus quam. Proin et metus mauris. Pellentesque ac risus ut tellus vestibulum sodales a aliquam metus. Aliquam neque enim, convallis id augue vitae, egestas elementum nisl. Suspendisse potenti. Sed tempor mi non commodo lacinia.
+					</div>
+				</div>
+			</div>
+			<!-- learning -->
+			<div class="wrapper">
+				<div class="learnBtns">
+					<div class="learnBtn">button1</div>
+					<div class="learnBtn">button2</div>
+					<div class="learnBtn">button3</div>
+					<div class="learnBtn">button4</div>
+					<div class="learnBtn">button5</div>
+				</div>
+				<div class="learnContent">
+					<div class="learnContent">
+						Suspendisse potenti. Duis mollis commodo commodo. Proin at molestie dui. Sed odio odio, varius nec lorem nec, molestie fermentum risus. Donec efficitur massa massa, tempus blandit metus gravida bibendum. Aliquam vitae ipsum sagittis, ullamcorper ligula sit amet, consequat nulla. Morbi metus felis, sagittis sit amet justo non, tincidunt facilisis justo. Pellentesque eleifend mauris quis pulvinar mollis. Suspendisse potenti. Mauris pharetra odio dolor, eu sodales dolor viverra eu. Nullam sodales felis id odio tempus scelerisque. Sed a pellentesque dui. Nam non odio dictum, tincidunt est vitae, vehicula tortor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+
+						Vestibulum convallis sodales elit, vitae tincidunt nisi ultrices sit amet. Proin est mi, dictum ut diam ut, consectetur posuere lorem. Donec pharetra neque viverra mauris sodales sagittis. Integer luctus turpis in lobortis vehicula. Pellentesque quam ipsum, feugiat non molestie at, volutpat vitae lacus. Vestibulum finibus dignissim risus, sit amet malesuada elit commodo nec. Aenean eget tempus felis. Nam rhoncus lacus mauris, eget viverra sapien sollicitudin vel. Vivamus lorem ex, aliquam sit amet rhoncus nec, dictum vel quam. Nulla facilisis tortor sit amet interdum aliquet.
+
+						Phasellus pretium malesuada nunc, et ultricies magna. Aliquam vitae lacinia turpis, id volutpat nunc. Nulla magna est, maximus sed rhoncus vel, consequat in metus. Aliquam eu ipsum sem. Donec eu ex ultrices sem sollicitudin lobortis. Proin ut molestie ipsum. Praesent arcu dolor, malesuada quis vehicula sit amet, maximus non magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. In dapibus eget libero non malesuada. Integer convallis magna et nibh vestibulum semper. Cras feugiat turpis in ipsum ultricies, eget feugiat ante sodales. Pellentesque sed feugiat nibh, non volutpat augue. Nam sit amet leo scelerisque, convallis risus id, accumsan elit. Phasellus id magna in massa mattis maximus. Aliquam nulla sem, lacinia convallis pharetra quis, pretium quis mauris. Aliquam tincidunt augue nec aliquet mattis.
+					</div>
+				</div>
+			</div>
+			<!-- contact -->
+			<div class="contactWrapper">
+				<!-- here comes a form -->
+				<div class="formContainer"></div>
+			</div>
+		</div>
+		<div class="bottom">
+			<span class="address">this the address and contact details</span>
+		</div>
+	</div>
+	<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="node_modules/knockout/build/output/knockout-latest.debug.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+	<script type="text/javascript">
+		/*function MyViewModel() {
+		     this.navLinks = [
+		         { name: 'Works' },
+		         { name: 'Learn' },
+		         { name: 'Profile' },
+		         { name: 'Contact' }
+		     ]
+		     $.getJSON("http://localhost/data/works.json", function(data) { 
+		     	console.log(data);
+			    // Now use this data to update your view models, 
+			    // and Knockout will update your UI automatically 
+			})
+		 }
+		 ko.applyBindings(new MyViewModel());*/
+	</script>
+</body>
+</html>
