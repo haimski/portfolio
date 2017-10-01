@@ -1,0 +1,60 @@
+body{
+	.main{
+		.top{ height: 50px}
+		.content{
+			.workList{
+				.btns-wrapper{
+					&:hover{
+						&:before, &:after{
+					    	color: #a72929;
+					    }
+					}
+					&:before{
+						display: block;
+						height: 25px;
+						content: "v";
+						font: normal 18px Arial, Helvetica, Sans-serif;
+						text-align: center;
+						-ms-transform: rotate(180deg); /* IE 9 */
+					    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+					    transform: rotate(180deg);
+					    position: absolute;
+					    top:0;
+					    width: 100%;
+					    border-top: 1px solid #777;
+					    color: #777;
+					}
+					height: 350px;
+				    width: 100%;
+				    overflow: hidden;
+				    position: relative;
+				    margin: 25px 0;
+				    &:after{
+				    	display: block;
+				    	height: 25px;
+						content: "v";
+						text-align: center;
+						font: normal 18px Arial, Helvetica, Sans-serif;
+						position: absolute;
+					    bottom:0;
+					    width: 100%;
+					    border-top: 1px solid #777;
+					    color: #777;
+					    &:hover{
+					    	color: #a72929;
+					    }
+				    }
+					.btns{
+						position: absolute;
+					    top: 25px;
+					    bottom: 25px;
+					    left: 0;
+					    right: -17px; /* Increase/Decrease this value for cross-browser compatibility */
+					    overflow-y: scroll;
+					}
+				}
+			}
+		}
+		.bottom{height: 50px; border-top: 1px solid #777;}
+	}
+}

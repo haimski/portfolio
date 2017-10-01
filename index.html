@@ -3,65 +3,60 @@
 <head>
 	<meta charset="UTF-8">
 	<title>my spa page</title>
-	<link rel="stylesheet" type="text/css" href="bootstrap.css" />
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-	<div class="container">
-		<div class="top-bar">
-			<div class="title">
+	<div class="container main">
+		<div class="top row">
+			<div class="title card-title col-sm-4">
 				Code Creatives 
 			</div>
-			<div class="links" data-bind="foreach: navLinks">
-				<span data-bind="text: name"></span>
+			<div class="links col-sm-4" data-bind="foreach: navLinks">
+				<span class="btn btn-light" data-bind="text: name"></span>
+			</div>
+			<div class="col-sm-4">
+				<div></div>
 			</div>
 		</div>
-		<div class="main">
+		<div class="content row">
 			<!-- here comes the content -->
+			<!-- there will be an array of contents - works api, learn api, form data -->
 			<!-- works -->
-			<!-- data-bind="template: 'works-template', foreach: works" -->
 			<div class="worksWrapper">
-				<!-- <script type="text/html" id="works-template">
-					<div class="workList">
-						<div class="link" data-bind="text: title, click: showProject"></div>
-					</div>
-					<div class="workImg">
-						<div class="imgWrap">
-							<img data-bind="attr: {src: img, alt: title}">
+				<!-- <div data-bind="foreach: works()">
+					<div data-bind="$data.title"></div>
+				</div> -->
+				<div class="workList col-sm-4">
+					<div class="btns-wrapper">
+						<div class="btns">
+							<a href="" class="btn btn-light btn-md btn-block">project1</a>
+							<a href="" class="btn btn-light btn-md btn-block">project2</a>
+							<a href="" class="btn btn-light btn-md btn-block">project3</a>
+							<a href="" class="btn btn-light btn-md btn-block">project4</a>
+							<a href="" class="btn btn-light btn-md btn-block">project5</a>
+							<a href="" class="btn btn-light btn-md btn-block">project6</a>
+							<a href="" class="btn btn-light btn-md btn-block">project7</a>
+							<a href="" class="btn btn-light btn-md btn-block">project8</a>
+							<a href="" class="btn btn-light btn-md btn-block">project9</a>
+							<a href="" class="btn btn-light btn-md btn-block">project10</a>
+							<a href="" class="btn btn-light btn-md btn-block">project11</a>
+							<a href="" class="btn btn-light btn-md btn-block">project12</a>
+							<a href="" class="btn btn-light btn-md btn-block">project13</a>
+							<a href="" class="btn btn-light btn-md btn-block">project14</a>
+							<a href="" class="btn btn-light btn-md btn-block">project15</a>
 						</div>
-						<div class="linkToProject">
-							<a data-bind="attr: {href: linkTo, target: '_blank'}, text: title"></a>
-						</div>
-					</div>
-					<div class="workDesc">
-						<div class="workTitle" data-bind="text: title"></div>
-						<div class="descText" data-bind="text: description"></div>
-					</div>
-				</script> -->
-				<div class="workList">
-					<div class="link">project1</div>
-					<div class="link">project2</div>
-					<div class="link">project3</div>
-					<div class="link">project4</div>
-					<div class="link">project5</div>
-					<div class="link">project6</div>
-					<div class="link">project7</div>
-					<div class="link">project8</div>
-					<div class="link">project9</div>
-					<div class="link">project10</div>
-					<div class="link">project11</div>
-					<div class="link">project12</div>
-					<div class="link">project13</div>
-					<div class="link">project14</div>
-					<div class="link">project15</div>
-				</div>
-				<div class="workImg">
-					<div class="imgWrap"></div>
-					<div class="linkToProject">
-						<a href="">link to project</a>
 					</div>
 				</div>
-				<div class="workDesc">
+				<div class="workImg col-sm-4">
+					<div class="imgWrap text-center">
+						here comes an image
+					</div>
+					<div class="linkToProject text-center">
+						<a href="" class="badge badge-light">link to project</a>
+					</div>
+				</div>
+				<div class="workDesc col-sm-4">
 					<div class="workTitle">
 						Aliquam neque enim
 					</div>
@@ -71,15 +66,15 @@
 				</div>
 			</div>
 			<!-- learning -->
-			<div class="wrapper">
-				<div class="learnBtns">
+			<div class="learnWrapper row" style="display: none">
+				<div class="learnBtns col-sm-2">
 					<div class="learnBtn">button1</div>
 					<div class="learnBtn">button2</div>
 					<div class="learnBtn">button3</div>
 					<div class="learnBtn">button4</div>
 					<div class="learnBtn">button5</div>
 				</div>
-				<div class="learnContent">
+				<div class="learnContent col-sm-2">
 					<div class="learnContent">
 						Suspendisse potenti. Duis mollis commodo commodo. Proin at molestie dui. Sed odio odio, varius nec lorem nec, molestie fermentum risus. Donec efficitur massa massa, tempus blandit metus gravida bibendum. Aliquam vitae ipsum sagittis, ullamcorper ligula sit amet, consequat nulla. Morbi metus felis, sagittis sit amet justo non, tincidunt facilisis justo. Pellentesque eleifend mauris quis pulvinar mollis. Suspendisse potenti. Mauris pharetra odio dolor, eu sodales dolor viverra eu. Nullam sodales felis id odio tempus scelerisque. Sed a pellentesque dui. Nam non odio dictum, tincidunt est vitae, vehicula tortor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
 
@@ -90,34 +85,27 @@
 				</div>
 			</div>
 			<!-- contact -->
-			<div class="contactWrapper">
+			<div class="contactWrapper row" style="display: none;">
 				<!-- here comes a form -->
-				<div class="formContainer"></div>
+				<div class="formContainer col-sm-12"></div>
 			</div>
 		</div>
-		<div class="bottom">
-			<span class="address">this the address and contact details</span>
+		<div class="bottom row text-center">
+			<span class="address align-center">this the address and contact details</span>
 		</div>
 	</div>
 	<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="node_modules/knockout/build/output/knockout-latest.debug.js"></script>
+	<script type="text/javascript" src="node_modules/underscore/underscore-min.js"></script>
 	<script type="text/javascript" src="script.js"></script>
 	<script type="text/javascript">
-		/*function MyViewModel() {
-		     this.navLinks = [
-		         { name: 'Works' },
-		         { name: 'Learn' },
-		         { name: 'Profile' },
-		         { name: 'Contact' }
-		     ]
-		     $.getJSON("http://localhost/data/works.json", function(data) { 
-		     	console.log(data);
-			    // Now use this data to update your view models, 
-			    // and Knockout will update your UI automatically 
-			})
-		 }
-		 ko.applyBindings(new MyViewModel());*/
+		$( document ).ready(function() {
+		    $(".label").mouseover(function(event) {
+		    	/* Act on the event */
+		    	$(this).addClass('label-danger');
+		    });
+		});
 	</script>
 </body>
 </html>
