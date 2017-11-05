@@ -3,97 +3,114 @@
 <head>
 	<meta charset="UTF-8">
 	<title>my spa page</title>
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Ubuntu" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 	<div class="container main">
 		<div class="top row">
 			<div class="title card-title col-sm-4">
-				Code Creatives 
+				<h1>Code Creatives</h1>
 			</div>
-			<div class="links col-sm-4" data-bind="foreach: navLinks">
-				<span class="btn btn-light" data-bind="text: name"></span>
+			<div id="pages" class="links col-sm-4" data-bind="foreach: pages">
+				<span class="btn btn-light glyphicon glyphicon-folder-close" data-bind="css: {'selected glyphicon-folder-open': $parent.selectedPage() === id()}, click: $parent.selectedPage.bind($parent, id())"></span>
 			</div>
-			<div class="col-sm-4">
-				<div></div>
+			<div class="page-title col-sm-4" data-bind="foreach: pages">
+				<h1 data-bind="visible: $parent.selectedPage() === id(), text: name"></h1>
 			</div>
 		</div>
-		<div class="content row">
-			<!-- here comes the content -->
-			<!-- there will be an array of contents - works api, learn api, form data -->
-			<!-- works -->
-			<div class="worksWrapper">
-				<!-- <div data-bind="foreach: works()">
-					<div data-bind="$data.title"></div>
-				</div> -->
-				<div class="workList col-sm-4">
-					<div class="btns-wrapper">
-						<div class="btns">
-							<a href="" class="btn btn-light btn-md btn-block">project1</a>
-							<a href="" class="btn btn-light btn-md btn-block">project2</a>
-							<a href="" class="btn btn-light btn-md btn-block">project3</a>
-							<a href="" class="btn btn-light btn-md btn-block">project4</a>
-							<a href="" class="btn btn-light btn-md btn-block">project5</a>
-							<a href="" class="btn btn-light btn-md btn-block">project6</a>
-							<a href="" class="btn btn-light btn-md btn-block">project7</a>
-							<a href="" class="btn btn-light btn-md btn-block">project8</a>
-							<a href="" class="btn btn-light btn-md btn-block">project9</a>
-							<a href="" class="btn btn-light btn-md btn-block">project10</a>
-							<a href="" class="btn btn-light btn-md btn-block">project11</a>
-							<a href="" class="btn btn-light btn-md btn-block">project12</a>
-							<a href="" class="btn btn-light btn-md btn-block">project13</a>
-							<a href="" class="btn btn-light btn-md btn-block">project14</a>
-							<a href="" class="btn btn-light btn-md btn-block">project15</a>
-						</div>
-					</div>
-				</div>
-				<div class="workImg col-sm-4">
-					<div class="imgWrap text-center">
-						here comes an image
-					</div>
-					<div class="linkToProject text-center">
-						<a href="" class="badge badge-light">link to project</a>
-					</div>
-				</div>
-				<div class="workDesc col-sm-4">
-					<div class="workTitle">
-						Aliquam neque enim
-					</div>
-					<div class="descText">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit diam odio. Proin justo turpis, rhoncus ut urna ac, viverra cursus quam. Proin et metus mauris. Pellentesque ac risus ut tellus vestibulum sodales a aliquam metus. Aliquam neque enim, convallis id augue vitae, egestas elementum nisl. Suspendisse potenti. Sed tempor mi non commodo lacinia.
-					</div>
-				</div>
+		<div id="pageContent" class="content row" data-bind="foreach: pages">
+            <div class="content-wrapper" data-bind="if: $parent.selectedPage() === id()">
+                <!-- pages contents will come in here -->
+                <div data-bind="text: content">
+                    <!-- works -->
+                    <div class="worksWrapper">
+                        <div class="workList col-sm-4">
+                            <div class="btns-wrapper">
+                                <div class="slider-arrows top-arr glyphicon glyphicon-chevron-up"></div>
+                                <div class="btns" data-bind="foreach: $root.works">
+                                    <a href="" class="btn btn-light btn-md btn-block" data-bind="text: $data.title, click: $root.selectedWork.bind($parent, id())"></a>
+                                </div>
+                                <div class="slider-arrows bottom-arr glyphicon glyphicon-chevron-down"></div>
+                            </div>
+                        </div>
+                        <div class="workImg col-sm-4">
+                            <div class="imgWrap text-center" data-bind="foreach: $root.works">
+                                <img src="" data-bind="visible: $root.selectedWork() === id(), attr: { img: $data.img }" alt="">
+                            </div>
+                            <div class="linkToProject text-center" data-bind="foreach: $root.works">
+                                <a href="" class="badge badge-light" data-bind="visible: $root.selectedWork() === id(), text: $data.title">link to project</a>
+                            </div>
+                        </div>
+                        <div class="workDesc col-sm-4" data-bind="foreach: $root.works">
+                            <div class="workTitle" data-bind="visible: $root.selectedWork() === id(), text: $data.title"></div>
+                            <div class="descText" data-bind="visible: $root.selectedWork() === id(), text: $data.description"></div>
+                        </div>
+                    </div>
+                </div>
+
+
 			</div>
+
 			<!-- learning -->
-			<div class="learnWrapper row" style="display: none">
-				<div class="learnBtns col-sm-2">
-					<div class="learnBtn">button1</div>
-					<div class="learnBtn">button2</div>
-					<div class="learnBtn">button3</div>
-					<div class="learnBtn">button4</div>
-					<div class="learnBtn">button5</div>
+			<!--<div class="learnWrapper row">
+				<div class="learnBtns col-sm-4" data-bind="foreach: $root.learningVideos">
+					<div class=" btn btn-default btn-block learnBtn" data-bind="text: $data.name, click: $root.selectedLearningVideo.bind($parent, id())">button1</div>
 				</div>
-				<div class="learnContent col-sm-2">
-					<div class="learnContent">
-						Suspendisse potenti. Duis mollis commodo commodo. Proin at molestie dui. Sed odio odio, varius nec lorem nec, molestie fermentum risus. Donec efficitur massa massa, tempus blandit metus gravida bibendum. Aliquam vitae ipsum sagittis, ullamcorper ligula sit amet, consequat nulla. Morbi metus felis, sagittis sit amet justo non, tincidunt facilisis justo. Pellentesque eleifend mauris quis pulvinar mollis. Suspendisse potenti. Mauris pharetra odio dolor, eu sodales dolor viverra eu. Nullam sodales felis id odio tempus scelerisque. Sed a pellentesque dui. Nam non odio dictum, tincidunt est vitae, vehicula tortor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-
-						Vestibulum convallis sodales elit, vitae tincidunt nisi ultrices sit amet. Proin est mi, dictum ut diam ut, consectetur posuere lorem. Donec pharetra neque viverra mauris sodales sagittis. Integer luctus turpis in lobortis vehicula. Pellentesque quam ipsum, feugiat non molestie at, volutpat vitae lacus. Vestibulum finibus dignissim risus, sit amet malesuada elit commodo nec. Aenean eget tempus felis. Nam rhoncus lacus mauris, eget viverra sapien sollicitudin vel. Vivamus lorem ex, aliquam sit amet rhoncus nec, dictum vel quam. Nulla facilisis tortor sit amet interdum aliquet.
-
-						Phasellus pretium malesuada nunc, et ultricies magna. Aliquam vitae lacinia turpis, id volutpat nunc. Nulla magna est, maximus sed rhoncus vel, consequat in metus. Aliquam eu ipsum sem. Donec eu ex ultrices sem sollicitudin lobortis. Proin ut molestie ipsum. Praesent arcu dolor, malesuada quis vehicula sit amet, maximus non magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. In dapibus eget libero non malesuada. Integer convallis magna et nibh vestibulum semper. Cras feugiat turpis in ipsum ultricies, eget feugiat ante sodales. Pellentesque sed feugiat nibh, non volutpat augue. Nam sit amet leo scelerisque, convallis risus id, accumsan elit. Phasellus id magna in massa mattis maximus. Aliquam nulla sem, lacinia convallis pharetra quis, pretium quis mauris. Aliquam tincidunt augue nec aliquet mattis.
+				<div class="learnContent col-sm-8">
+					<div class="video-wrapper">
+                        <iframe data-bind="attr: { src: $root.learningVideos[$root.selectedLearningVideo()-1].url }" frameborder="0" allowfullscreen></iframe>
 					</div>
 				</div>
-			</div>
+			</div>-->
 			<!-- contact -->
-			<div class="contactWrapper row" style="display: none;">
-				<!-- here comes a form -->
-				<div class="formContainer col-sm-12"></div>
-			</div>
+			<!--<div class="contactWrapper row">
+				&lt;!&ndash; here comes a form &ndash;&gt;
+                <blockquote>
+                    <p>Every Application Starts With One Click Of A Mouse</p>
+                    <footer class="blockquote-footer"><cite>Code Creatives</cite></footer>
+                </blockquote>
+                <p class="attribute">Have A Question?</p>
+                <p class="attribute">Want to create a Digital Project?</p>
+                <p class="attribute">Need A Web or Mobile App?</p>
+                <p class="attribute">Always Consult the Pros!</p>
+				<div class="formContainer col-sm-12">
+                    <form action="" class="form-inline">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" class="form-control" id="fullName"/>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label for="email">eMail</label>
+                            <input type="text" class="form-control" id="email" />
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" class="form-control" id="phone" />
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label for="comments">Comments</label>
+                            <textarea class="form-control" id="comments" rows="3" ></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label></label>
+                            <button class="btn btn-danger" type="submit">send</button>
+                        </div>
+                    </form>
+                </div>
+			</div>-->
 		</div>
-		<div class="bottom row text-center">
-			<span class="address align-center">this the address and contact details</span>
-		</div>
+
 	</div>
+    <div class="bottom row text-center">
+        <span class="address align-center">this the address and contact details</span>
+    </div>
+        </div>
 	<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="node_modules/knockout/build/output/knockout-latest.debug.js"></script>
@@ -105,6 +122,16 @@
 		    	/* Act on the event */
 		    	$(this).addClass('label-danger');
 		    });
+			$(".top-arr").mouseover(function (){
+				$('.btns').animate({
+					scrollTop: $(".btns-wrapper").position().top
+				}, 500);
+			});
+			$(".bottom-arr").mouseover(function (){
+				$('.btns').animate({
+					scrollTop: $(".btns").height()
+				}, 500);
+			});
 		});
 	</script>
 </body>
